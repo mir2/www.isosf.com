@@ -1,0 +1,3 @@
+permalink : /:categories/:year-:month/:day-:title.html
+production_url : http://www.isosf.com
+BASE_PATH : /
