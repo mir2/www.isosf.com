@@ -1,127 +1,80 @@
-function instance(d, p, h, c) {
+function Render(d, c) {
 	var me = this;
 
-	this.p = p;
-	this.h = h;
+	this.ts = d[0];
+	this.fss = d[1];
 	this.c = c;
-	this.H = h * c;
 
-	this.d = [];
-	this.v = [];
-	this.t = [];
-	this.w = $(window);
+	this.i = 0;
+	this.j = 0;
+	this.r = Math.floor(Math.random() * 10000);
 
-	this.initData = function(d) {
-		var i, j, c, f, t;
-		var ts, fs, fc, tfs;
-		var r = Math.floor(Math.random() * 10000);
+	this.f = $('#f');
 
-		ts = d[0];
-		tfs = d[1];
+	this.load = function() {
+		var ts = me.ts;
+		var fss = me.fss;
 
-		c = ts.length;
+		var i = me.i;
+		var j = me.j;
+		var r = me.r;
+		var c = me.c;
 
-		for(i = 0; i < c; i++) {
+		var k = 0;
+		var s = ['<table cellpadding="0" cellspacing="0" border="0">'];
+		var t = null;
+		var f = null;
+		var fs = null;
+		var fc = 0;
+
+		if (i < ts.length && j <= (fc = (fs = fss[i]).length)) {
 			t = ts[i];
-			fs = tfs[i];
-			fc = fs.length;
+			for (; k < c; k++) {
+				if (j >= fc) {
+					i++;
+					if (i < ts.length) {
+						fc = (fs = fss[i]).length;
+						t = ts[i];
+						j = 0;
+					} else {
+						window.clearInterval(me.t);
+						break;
+					}
+				}
 
-			for(j = 0; j < fc; j++) {
 				f = fs[(j + r) % fc];
-				f.push(t);
-				me.d.push(f);
-			}
-		}
-	};
 
-	this.initView = function() {
-		var b = $('#contents');
-		var i, e;
-		var h = me.H;
-		var c = me.d.length;
+				if (k > 0) {
+					s.push('<tr home="', f[0], '"><td>', f[1], '</td><td>', f[2], '</td><td>', t, '</td><td>', f[3], '</td><td>', f[4], '</td><td>', f[5], '</td></tr>');
+				} else {
+					s.push('<tr home="', f[0], '"><td style="width:107px;">', f[1], '</td><td style="width:107px;">', f[2], '</td><td style="width:131px;">', t, '</td><td style="width:83px;">', f[3], '</td><td style="width:251px;">', f[4], '</td><td style="width:83px;">', f[5], '</td></tr>');
+				}
 
-		for(i = 0; i < c; i += me.c) {
-			if((c - i) < me.c) {
-				h = (c - i) * me.h;
-			}
-
-			b.append(e = $('<div style="height:' + h + 'px"></div>'));
-			me.v.push(e);
-		}
-	};
-
-	this.loadTable = function(i) {
-		var j, k, s, f;
-
-		if(i >= 0 && i < me.v.length && !me.t[i]) {
-			j = i * me.c;
-			k = j + me.c;
-
-			if(k > me.d.length) {
-				k = me.d.length;
-			}
-
-			f = me.d[j];
-
-			s = '<table cellpadding="0" cellspacing="0" border="0">';
-
-			if(j > 0) {
-				s += '<tr home="' + f[0] + '"><td style="width:107px;">';
-				s += f[1] + '</td><td style="width:107px;">';
-				s += f[2] + '</td><td style="width:131px;">';
-				s += f[6] + '</td><td style="width:83px;">';
-				s += f[3] + '</td><td style="width:251px;">';
-				s += f[4] + '</td><td style="width:83px;">';
-				s += f[5] + '</td></tr>';
 				j++;
-			} else {
-				s += '<tr home="www.isosf.com"><th style="width:107px;">';
-				s += '服务器名</th><th style="width:107px;">';
-				s += '网络地址</th><th style="width:131px;">';
-				s += '开放时间</th><th style="width:83px;">';
-				s += '网络类型</th><th style="width:251px;">';
-				s += '游戏版本介绍</th><th style="width:83px;">';
-				s += '联系客服</th></tr>';
 			}
+		}
 
-			for(; j < k; j++) {
-				f = me.d[j];
-				s += '<tr home="' + f[0] + '"><td>';
-				s += f[1] + '</td><td>';
-				s += f[2] + '</td><td>';
-				s += f[6] + '</td><td>';
-				s += f[3] + '</td><td>';
-				s += f[4] + '</td><td>';
-				s += f[5] + '</td></tr>';
-			}
+		s.push('</table>');
 
-			s += '</table>';
+		me.i = i;
+		me.j = j;
 
-			me.t[i] = s = $(s);
-
+		if (k) {
+			me.f.append(s = $(s.join("")));
 			s = s.find('tr');
-			s.click(function(){var h=$(this).attr('home');if(h){window.open('http://'+h);}});
-			s.hover(function(){$(this).addClass("hover");},function(){$(this).removeClass("hover");});
 
-			me.v[i].replaceWith(me.t[i]);
+			s.click(function(){var h=$(this).attr('home');if(h){window.open('http://'+h);}});
+			s.hover(function(){var t=$(this);t.css('background-color','orange');t.css('text-decoration','underline');},
+				function(){var t=$(this);t.css('background-color','');t.css('text-decoration','');});
 		}
 	};
 
-	this.scrollTable = function() {
-		var i = Math.floor((me.w.scrollTop() - me.p) / me.H);
-		me.loadTable(i++);
-		me.loadTable(i);
-	};
-
-	this.initData(d);
-	this.initView();
-	this.scrollTable();
-
-	this.w.scroll(me.scrollTable);
+	this.t = window.setInterval(this.load, 1000);
+	this.load();
 }
 
-function load(data) {
-	new instance(data, 68, 25, 50);
+function load(d) {
+	new Render(d, 60);
 }
 
 document.write('<script type="text/javascript" src="http://isosf.sinaapp.com/f.php" charset="gbk"></script>');
