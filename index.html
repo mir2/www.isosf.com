@@ -23,9 +23,9 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 })();
 function wheel(e) {
 e = e || window.event;
-var v = e.wheelDelta ? e.wheelDelta / 40 : e.detail;
+var v = e.wheelDelta ? e.wheelDelta : e.detail;
 var swf = document.getElementById("SFRender");
-swf && swf.wheel ? swf.wheel(v) : 0;
+if(swf && swf.wheel) { swf.wheel(v > 0 ? 1 : -1); }
 }
 function resize() {
 document.getElementById("bed").focus();
@@ -33,18 +33,27 @@ $("#SFRender").css("height", $(window).height() + "px");
 }
 function go(url) {
 document.getElementById("bed").focus();
-url ? window.open('http://' + url) : 0;
+if(url) { window.open('http://' + url); }
 }
+var _w = 0;
 $(window).resize(resize);
 $(document).ready(function() {
-document.addEventListener ? document.addEventListener('DOMMouseScroll', wheel, false) : 0;
-window.onmousewheel = document.onmousewheel = wheel;
+window.onmousewheel = function(e) { if(_w <= 1) { _w = 1; wheel(e); } };
+document.onmousewheel = function(e) { if(_w <= 2) { _w = 2; wheel(e); } };
+if(document.addEventListener) { document.addEventListener('DOMMouseScroll', function(e) { if(_w <= 3) { _w = 3; wheel(e); } }, false); }
 swfobject.embedSWF("SFRender.swf", "SFRender", "100%", "100%", "9.0.124", "playerProductInstall.swf", {}, { bgcolor : "#ffffff", quality : "high", allowScriptAccess : "sameDomain" }, { id : "SFRender" }, resize);
 });
 </script>
 </head>
 <body id="bed" scroll="no" style="margin:0; padding:0; overflow:hidden;">
-<div style="position:absolute; top:0; left:0;"><a href="list.html">新开传奇网站推荐</a> <a href="http://blog.sina.com.cn/isosf">新浪官方博客</a> <a href="http://hi.baidu.com/isosf">百度官方空间</a> <a href="http://www.5wsf.net">我玩私服网</a> <a href="http://bbs.5uwl.net">无忧网络论坛</a></div>
+<div style="position:absolute; top:0; left:0;">
+<a href="list.html">新开传奇网站推荐</a>
+<a href="http://blog.sina.com.cn/isosf">新浪官方博客</a>
+<a href="http://hi.baidu.com/isosf">百度官方空间</a>
+<a href="http://www.5wsf.net">我玩私服网</a>
+<a href="http://bbs.5uwl.net">无忧网络论坛</a>
+<script type="text/javascript" src="http://s94.cnzz.com/stat.php?id=4092188&web_id=4092188&show=pic"></script>
+</div>
 <div id="SFRender"></div>
 </body>
 </html>
