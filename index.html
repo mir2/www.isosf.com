@@ -37,12 +37,10 @@ if(url) { window.open('http://' + url); }
 }
 var _w = 0;
 $(window).resize(resize);
-$(document).ready(function() {
 window.onmousewheel = function(e) { if(_w <= 1) { _w = 1; wheel(e); } };
 document.onmousewheel = function(e) { if(_w <= 2) { _w = 2; wheel(e); } };
 if(document.addEventListener) { document.addEventListener('DOMMouseScroll', function(e) { if(_w <= 3) { _w = 3; wheel(e); } }, false); }
-swfobject.embedSWF("sfPlayer.swf", "sfPlayer", "100%", "100%", "9.0.124", "playerProductInstall.swf", {}, { bgcolor : "#ffffff", quality : "high", allowScriptAccess : "sameDomain" }, { id : "sfPlayer" }, resize);
-});
+swfobject.embedSWF("http://sfpress.sinaapp.com/assets/sfPlayer.swf", "sfPlayer", "100%", "100%", "9.0.124", "http://sfpress.sinaapp.com/assets/install.swf", {}, { bgcolor : "#ffffff", quality : "high", allowScriptAccess : "always" }, { id : "sfPlayer" }, resize);
 </script>
 <style>
 div#header {
@@ -68,7 +66,7 @@ background-color: #4C4C4C;
 <body id="bed" scroll="no" style="margin:0; padding:0; overflow:hidden; text-align:center;">
 <div id="header">
 <div style="width:762px; margin:0 auto; height:29px;">
-<img src="logo.png" style="float:left; margin:0 3px 0 10px;"/>
+<img src="http://sfpress.sinaapp.com/assets/logo.png" width="58" height="29" style="float:left; margin:0 3px 0 10px;"/>
 <a href="/">爱搜私服</a>
 <a target="_blank" href="list.html">新开传奇网站</a>
 <a href="/">经典传奇网名</a>
