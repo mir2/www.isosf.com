@@ -33,7 +33,7 @@ $("#sfPlayer").css("height", ($(window).height() - 42) + "px");
 }
 function go(url) {
 document.getElementById("bed").focus();
-if(url) { window.open('http://' + url); }
+if(url) { var w = window.open('http://' + url); w.opener = null; }
 }
 var _w = 0;
 $(window).resize(resize);
