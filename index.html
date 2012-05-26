@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html version="-//W3C//DTD XHTML 1.1//EN"
 	xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
@@ -41,33 +40,11 @@ window.onmousewheel = function(e) { if(_w <= 1) { _w = 1; wheel(e); } };
 document.onmousewheel = function(e) { if(_w <= 2) { _w = 2; wheel(e); } };
 if(document.addEventListener) { document.addEventListener('DOMMouseScroll', function(e) { if(_w <= 3) { _w = 3; wheel(e); } }, false); }
 swfobject.embedSWF("http://sfpress.sinaapp.com/assets/sfPlayer.swf", "sfPlayer", "100%", "100%", "9.0.124", "http://sfpress.sinaapp.com/assets/install.swf", {}, { bgcolor : "#ffffff", quality : "high", allowScriptAccess : "always" }, { id : "sfPlayer" }, resize);
-function favorite() {
-var ctrl = (navigator.userAgent.toLowerCase()).indexOf('mac') != -1 ? 'Command/Cmd': 'CTRL';
-if (document.all) {
-window.external.addFavorite('http://www.isosf.com/', '爱搜私服 - 新开传奇网站私服搜索发布平台');
-} else if (window.sidebar) {
-window.sidebar.addPanel('爱搜私服 - 新开传奇网站私服搜索发布平台', 'http://www.isosf.com/', "");
-} else {
-alert('您可以尝试通过快捷键 ' + ctrl + ' + D 收藏本站');
-}
-}
 </script>
 <style>
-div#links a {
-display:block;
-float:left;
-color:white;
-font-size:12px;
-font-family:宋体,sans-serif;
-text-decoration:none;
-padding:15px 7px 13px 7px;
-}
-div#links a:hover {
-background-color:#4C4C4C;
-}
-div#links img {
-float:left;
-}
+div#links a { display:block; float:left; color:white; font-size:12px; font-family:宋体,sans-serif; text-decoration:none; padding:15px 7px 13px 7px; }
+div#links a:hover { background-color:#4C4C4C; }
+div#links img { float:left; }
 </style>
 </head>
 <body id="bed" scroll="no" style="margin:0; padding:0; overflow:hidden; text-align:center;">
@@ -86,15 +63,16 @@ float:left;
 <!-- Baidu Button END -->
 </div>
 <div id="links" style="float:left; padding-left:7px;">
-<a target="_blank" href="list.html" title="新开传奇网站">新开传奇网站</a>
-<a target="_blank" href="download.html" title="热血传奇20110928客户端">热血传奇20110928客户端</a>
-<a href="javascript:favorite();" title="收藏本站">收藏本站</a>
+<a target="_blank" href="http://www.isosf.com/" title="爱搜私服">爱搜私服</a>
+<a target="_blank" href="http://3000ok.isosf.com/" title="3000ok">3000ok</a>
+<a target="_blank" href="http://www.isosf.com/list.html" title="新开传奇网站">新开传奇网站</a>
+<a target="_blank" href="http://www.isosf.com/download.html" title="热血传奇20110928客户端">热血传奇20110928客户端</a>
 <a target="_blank" href="http://blog.sina.com.cn/isosf" title="新浪博客">新浪博客</a>
+</div>
+</div>
+</div>
+<div id="sfPlayer"><script type="text/javascript">document.write('<div style="height:1500px;"></div>');</script></div>
 <script type="text/javascript" src="http://s94.cnzz.com/stat.php?id=4092188&web_id=4092188"></script>
-</div>
-</div>
-</div>
-<div id="sfPlayer"></div>
 <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=639581" ></script>
 <script type="text/javascript" id="bdshell_js"></script>
 <script type="text/javascript">
