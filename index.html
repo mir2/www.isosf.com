@@ -1,17 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html version="-//W3C//DTD XHTML 1.1//EN"
-	xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.w3.org/1999/xhtml http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd">
-<head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>爱搜私服 - 新开传奇网站私服搜索发布平台</title>
 <meta name="robots" content="all" />
 <meta name="keywords" content="新开传奇网站私服" />
 <meta name="description" content="爱搜私服 - 新开传奇网站搜索，第一时间发布新开传奇私服信息" />
-<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
 <script type="text/javascript" src="http://lib.sinaapp.com/js/swfobject/2.2/swfobject.js"></script>
 <script type="text/javascript">
+swfobject.embedSWF("http://sfpress.sinaapp.com/assets/sfPlayer.swf", "sfPlayer", "100%", "2000", "9.0.124", "http://sfpress.sinaapp.com/assets/install.swf", {}, { bgcolor : "#ffffff", quality : "high", allowScriptAccess : "always" }, { id : "sfPlayer", name : "sfPlayer"});
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount', 'UA-29825872-1']);
 _gaq.push(['_trackPageview']);
@@ -20,26 +16,6 @@ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async
 ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 })();
-function wheel(e) {
-e = e || window.event;
-var v = e.wheelDelta ? e.wheelDelta : e.detail;
-var swf = document.getElementById("sfPlayer");
-if(swf && swf.wheel) { swf.wheel(v > 0 ? 1 : -1); }
-}
-function resize() {
-document.getElementById("bed").focus();
-$("#sfPlayer").css("height", ($(window).height() - 42) + "px");
-}
-function go(url) {
-document.getElementById("bed").focus();
-if(url) { var w = window.open('http://' + url); w.opener = null; }
-}
-var _w = 0;
-$(window).resize(resize);
-window.onmousewheel = function(e) { if(_w <= 1) { _w = 1; wheel(e); } };
-document.onmousewheel = function(e) { if(_w <= 2) { _w = 2; wheel(e); } };
-if(document.addEventListener) { document.addEventListener('DOMMouseScroll', function(e) { if(_w <= 3) { _w = 3; wheel(e); } }, false); }
-swfobject.embedSWF("http://sfpress.sinaapp.com/assets/sfPlayer.swf", "sfPlayer", "100%", "100%", "9.0.124", "http://sfpress.sinaapp.com/assets/install.swf", {}, { bgcolor : "#ffffff", quality : "high", allowScriptAccess : "always" }, { id : "sfPlayer" }, resize);
 </script>
 <style>
 div#links a { display:block; float:left; color:white; font-size:12px; font-family:宋体,sans-serif; text-decoration:none; padding:15px 7px 13px 7px; }
@@ -71,7 +47,7 @@ div#links img { float:left; }
 </div>
 </div>
 </div>
-<div id="sfPlayer"><script type="text/javascript">document.write('<div style="height:1500px;"></div>');</script></div>
+<div id="sfPlayer"><script type="text/javascript">document.write('<div style="height:2000px;"></div>');</script></div>
 <script type="text/javascript" src="http://s94.cnzz.com/stat.php?id=4092188&web_id=4092188"></script>
 <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=639581" ></script>
 <script type="text/javascript" id="bdshell_js"></script>
