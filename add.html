@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+<title>爱搜私服 - 自助广告发布</title>
+<style>
+body { font-size: 14px; font-family: 宋体; line-height: 20px; }
+textarea { display: block; float: left; margin: 2px; width: 350px; height: 200px; }
+</style>
+<script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.7.2/jquery.min.js"></script>
+</head>
+<body>
+<form id="f" action="http://sfpress.sinaapp.com/php/add.php" method="post">
+<b>注意：每个汉字算2个字符，请不要超出限定的字符长度，否则会被系统截断。请按照左侧格式在右侧填写并提交申请</b><br />
+<b style="color:red;">日期和时间：07:00:00 - 23:30:00，每30分钟为一个时段，通宵填00:30:00 全天填00:00:00</b>
+<input type="hidden" id="name" name="name" />
+<input type="hidden" id="ip" name="ip" />
+<input type="hidden" id="time" name="time" />
+<input type="hidden" id="net" name="net" />
+<input type="hidden" id="note" name="note" />
+<input type="hidden" id="qq" name="qq" />
+<input type="hidden" id="home" name="home" />
+<input type="submit" value="提交申请" />
+</form>
+<div style="height: 218px;">
+<textarea disabled="true">
+服务器名：您的服务器名（限16个字符）
+网络地址：您的网络地址（限16个字符）
+开放时间：2012-06-26 13:00:00
+网络类型：您的网络类型（限12个字符）
+游戏介绍：您的游戏版本介绍（限40个字符）
+联系客服：您的客服联系方法（限12个字符）
+游戏主页：您的游戏主页地址，游戏官方网站
+</textarea>
+<textarea id="edit">
+服务器名：
+网络地址：
+开放时间：
+网络类型：
+游戏介绍：
+联系客服：
+游戏主页：
+</textarea>
+</div>
+<script type="text/javascript">
+function getQueryStringRegExp(name) {
+    var reg = new RegExp("(^|\\?|&)"+ name +"=([^&]*)(\\s|&|$)", "i");
+    if (reg.test(location.href)) return unescape(RegExp.$2.replace(/\+/g, " ")); return "";
+}
+function strleft(s, n) {
+	var i, len = s.length; for(i = 0; i < len; i++) { n--; if(!/[\x00-\xFF]/.test(s.charAt(i))) n--; if(n < 0) return s.substring(0, i); } return s;
+}
+$('#f').submit(function() {
+		var v, reg, match;
+		var vs = document.getElementById('edit').value.split('\n');
+
+		v = vs[0]; reg = /^\s*服务器名[:：]\s*(.+?)\s*$/im; match = reg.exec(v);
+		if(match == null) { alert('服务器名格式不正确'); return false; }
+		$('#name').attr('value', strleft(match[1], 16));
+
+		v = vs[1]; reg = /^\s*网络地址[:：]\s*(.+?)\s*$/im; match = reg.exec(v);
+		if(match == null) { alert('网络地址格式不正确'); return false; }
+		$('#ip').attr('value', strleft(match[1], 16));
+
+		v = vs[2]; reg = /^\s*开放时间[:：]\s*(\d+[\/\\-]\d+[\/\\-]\d+\s+\d+[:：][03]0[:：]00)\s*$/im; match = reg.exec(v);
+		if(match == null) { alert('开放时间格式不正确'); return false; }
+		$('#time').attr('value', match[1]);
+
+		v = vs[3]; reg = /^\s*网络类型[:：]\s*(.+?)\s*$/im; match = reg.exec(v);
+		if(match == null) { alert('网络类型格式不正确'); return false; }
+		$('#net').attr('value', strleft(match[1], 12));
+
+		v = vs[4]; reg = /^\s*游戏介绍[:：]\s*(.+?)\s*$/im; match = reg.exec(v);
+		if(match == null) { alert('游戏介绍格式不正确'); return false; }
+		$('#note').attr('value', strleft(match[1], 40));
+
+		v = vs[5]; reg = /^\s*联系客服[:：]\s*(.+?)\s*$/im; match = reg.exec(v);
+		if(match == null) { alert('联系客服格式不正确'); return false; }
+		$('#qq').attr('value', strleft(match[1], 12));
+
+		v = vs[6]; reg = /^\s*游戏主页[:：]\s*(http:\/\/)?(.+?)\s*$/im; match = reg.exec(v);
+		if(match == null) { alert('游戏主页格式不正确'); return false; }
+		$('#home').attr('value', match[2]);
+});
+if(getQueryStringRegExp('ok')) alert('申请提交成功，稍后人工审核后即可看到您的广告！');
+</script>
+</body>
+</html>
